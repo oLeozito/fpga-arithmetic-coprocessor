@@ -4,6 +4,7 @@
 using namespace std;
 
 int main(){
+
     // DECLARACOES
     int tamanho;
     char confirmacao = 'O';
@@ -15,43 +16,49 @@ int main(){
         // Iniciar Matrizes.
         cout << "Por favor, digite o tamanho da matriz." << endl;
         cin >> tamanho;
-        int matriz1[tamanho][tamanho];
-        int matriz2[tamanho][tamanho];
+        int matriz1[tamanho];
+        int matriz2[tamanho];
 
         if((tamanho >= 2) && (tamanho <= 5)){
 
             cout << "\nPrimeira Matriz:" << endl;
-            for(int i = 0; i<tamanho; i++){
-                for(int j = 0; j<tamanho; j++){
-                    cout << "Digite o valor da " << i+1 << "a linha, e " << j+1 << "a coluna" << endl; 
-                    cin >> matriz1[i][j];
-                }
+            for(int i = 0; i<tamanho*tamanho; i++){
+                cout << "Digite o " << i+1 << " valor" << endl; 
+                cin >> matriz1[i];
             }
 
             cout << "\nSegunda Matriz:" << endl;
-            for(int i = 0; i<tamanho; i++){
-                for(int j = 0; j<tamanho; j++){
-                    cout << "Digite o valor da " << i+1 << "a linha, e " << j+1 << "a coluna" << endl; 
-                    cin >> matriz2[i][j];
-                }
+            for(int i = 0; i<tamanho*tamanho; i++){
+                cout << "Digite o " << i+1 << " valor" << endl; 
+                cin >> matriz2[i];
             }
-        
+            
             //  Exibir as matrizes.
             cout << endl;
-            for(int i = 0; i<tamanho; i++){
-                for(int j = 0; j<tamanho; j++){
-                    cout << matriz1[i][j] << " | ";
+            int flag = 0;
+            cout << "\nPrimeira Matriz:" << endl;
+            for(int i = 0; i<tamanho*tamanho; i++){
+                cout << matriz1[i] << " | ";
+                flag++;
+                if(flag == tamanho && i != (tamanho*tamanho)-1){
+                    cout << "\n-----------------" << endl;
+                    flag = 0;
                 }
-                if(i+1 != tamanho){cout << "\n-----------------" << endl;}
             }
 
             cout << "\n" <<endl;
-            for(int i = 0; i<tamanho; i++){
-                for(int j = 0; j<tamanho; j++){
-                    cout << matriz2[i][j] << " | ";
+
+            flag = 0;
+            cout << "\nSegunda Matriz:" << endl;
+            for(int i = 0; i<tamanho*tamanho; i++){
+                cout << matriz2[i] << " | ";
+                flag++;
+                if(flag == tamanho && i != (tamanho*tamanho)-1){
+                    cout << "\n-----------------" << endl;
+                    flag = 0;
                 }
-                if(i+1 != tamanho){cout << "\n-----------------" << endl;}
             }
+
             cout << "\nOs valores das matrizes foram corretamente inseridos? s/n " << endl;
             cin >> confirmacao;
         }
