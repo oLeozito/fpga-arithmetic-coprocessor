@@ -16,13 +16,13 @@ int main(){
         // Iniciar Matrizes.
         cout << "Por favor, digite o tamanho da matriz." << endl;
         cin >> tamanho;
-        int matriz1[tamanho];
-        int matriz2[tamanho];
+        int matriz1[(tamanho*tamanho)];
+        int matriz2[(tamanho*tamanho)];
 
         if((tamanho >= 2) && (tamanho <= 5)){
 
             cout << "\nPrimeira Matriz:" << endl;
-            for(int i = 0; i<tamanho*tamanho; i++){
+            for(int i = 0; i<(tamanho*tamanho); i++){
                 cout << "Digite o " << i+1 << " valor" << endl; 
                 cin >> matriz1[i];
             }
@@ -59,7 +59,7 @@ int main(){
                 }
             }
 
-            cout << "\nOs valores das matrizes foram corretamente inseridos? s/n " << endl;
+            cout << "\n\nOs valores das matrizes foram corretamente inseridos? s/n " << endl;
             cin >> confirmacao;
         }
 
@@ -69,7 +69,7 @@ int main(){
     // Escolha da Operação a ser feita
     int opcao = 0;
     while(!(opcao >= 1 && opcao <= 4)){
-        cout << "Qual operacao deseja realizar?\n1-Soma\n2-Subtracao\n3-Multiplicacao\n4-Divisao\n:" << endl;
+        cout << "Qual operacao deseja realizar?\n1-Soma\n2-Subtracao\n3-Multiplicacao\n4-Divisao" << endl;
         cin >> opcao;
     };
 
