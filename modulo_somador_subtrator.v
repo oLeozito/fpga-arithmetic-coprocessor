@@ -3,18 +3,18 @@ module modulo_somador_subtrator(
     input op,            // Se op = 0 → soma; se op = 1 → subtração
     output [8:0] resultado // Resultado de 9 bits
 );
-	 wire [8:0] operando_a;
-    wire [8:0] operando_b;
+
+	 wire [8:0] operando_b;
     wire [8:0] soma;
 
     // Se op = 1 (subtração), fazemos complemento de dois de 'b'
     assign operando_b = op ? {1'b0, ~b} + 1 : {1'b0, b};
-	 assign operando_a = {1'b0,a};
 
-    // Soma com bit extra para overflow
-    assign soma = operando_a + operando_b;
+    // Soma com bit extra
+    assign soma = {1'b0, a} + operando_b;
 
-    // O bit 8 do resultado é simplesmente soma[8]
-    assign resultado = {(soma[8] & !op) | (!soma[8] & op), soma[7:0]};
-	 
+    // O bit 8 (resultado[8]) será:
+    // 1 se houve overflow na soma
+    // 1 se resultado for negativo na subtração
+	 assign resultado = {((~op && (soma[8] ^ soma[7])) || (op && soma[8])),soma[7:0]};
 endmodule
