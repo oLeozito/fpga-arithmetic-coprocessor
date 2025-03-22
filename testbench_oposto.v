@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module testbench_modulo_oposto;
+module testbench_oposto;
     // Declaração das variáveis de entrada e saída
     reg [7:0] entrada;
     wire [8:0] saida;
@@ -17,7 +17,7 @@ module testbench_modulo_oposto;
     // Arquivo de saída para o GTKWave
     initial begin
         $dumpfile("simulacao.vcd");
-        $dumpvars(0, testbench_modulo_oposto);
+        $dumpvars(0, testbench_oposto);
     end
 
     // Testes
