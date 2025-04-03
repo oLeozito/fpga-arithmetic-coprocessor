@@ -16,12 +16,11 @@ module gerencia_matriz(
     // reg [8:0] matriz2 [0:24]; // Matriz 2 (5x5) - 25 posições
 	 reg [4:0] contador;
 	 reg gravar;
-	 reg [8:0] dado_var;
+	 reg [8:0] dado_var,aux;
 	 wire [8:0] saida;
 
 	 
-	 initial begin
-		matriz_escrita[0] = 9'd5;  
+	 initial begin  
 		contador = 0;
 	 end
 	 
@@ -73,5 +72,8 @@ module gerencia_matriz(
         end
     end
 
+	always@(posedge clk) begin
+		matriz1[8:0] = matriz_ler[0]; matriz1[17:9] = matriz_ler[1];
+	end
 
 endmodule
