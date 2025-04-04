@@ -1,10 +1,10 @@
 # Coprocessador para Operações entre Matrizes
 
-## 📌 Introdução -Sobre o Projeto
+## 📌 Introdução - Sobre o Projeto
 
 Na disciplina MI - Sistemas Digitais do semestre 2025.1, foi proposto como primeiro problema o desenvolvimento de um **coprocessador** capaz de realizar operações entre matrizes utilizando uma **FPGA na placa DE1-SoC**. O sistema conta com módulos dedicados para operações matriciais e gerenciamento de memória.
 
-Este relatorio descreve a implementação desse sistema, que inclui as funcionalidades de adição, subtração, multiplicação, matriz transcposta, oposta e determinante. O projeto foi desenvolvido em **Verilog HDL** e modularizado de acordo com as operações, além do acesso e gerenciamento de memória da placa.
+Este relatorio descreve a implementação desse sistema, que inclui as funcionalidades de adição, subtração, multiplicação, matriz transposta, oposta e determinante. O projeto foi desenvolvido em **Verilog HDL** e modularizado de acordo com as operações, além do acesso e gerenciamento de memória da placa.
 
 Na seção de **Fundamentação Teórica**, serão explicitados os conceitos utilizados como base para a resolução do problema. Na seção de **Metodologia**, serão descritos os processos envolvidos no desenvolvimento do software, como as escolhas de abordagem, a definição dos requisitos e funcionalidades, e a ordem de codificação. Na seção de **Conclusão**, serão informadas brevemente as conclusões e os objetivos cumpridos. Por fim, na seção de **Referências**, serão listadas as fontes utilizadas para a elaboração da resolução.
 
