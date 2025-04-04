@@ -2,7 +2,7 @@
 
 ## 📌 Introdução - Sobre o Projeto
 
-Na disciplina MI - Sistemas Digitais do semestre 2025.1, foi proposto como primeiro problema o desenvolvimento de um **coprocessador** capaz de realizar operações entre matrizes utilizando uma **FPGA na placa DE1-SoC**. O sistema conta com módulos dedicados para operações matriciais e gerenciamento de memória. O projeto foi desenvolvido em **Verilog HDL** e modularizado de acordo com as operações, além do acesso e gerenciamento de memória da placa.
+Na disciplina MI - Sistemas Digitais do semestre 2025.1, foi proposto como primeiro problema o desenvolvimento de um **coprocessador** capaz de realizar operações entre matrizes, de modo que cada elemento da matriz é representado por um **número inteiro de 8 bits**, utilizando uma **FPGA na placa DE1-SoC**. O sistema conta com módulos dedicados para operações matriciais e gerenciamento de memória. O projeto foi desenvolvido em **Verilog HDL** e modularizado de acordo com as operações, além do acesso e gerenciamento de memória da placa.
 
 ### ✨ Funcionalidades Implementadas
 O coprocessador pode executar as seguintes operações:
@@ -14,8 +14,6 @@ O coprocessador pode executar as seguintes operações:
 - **Cálculo da matriz transposta**
 - **Cálculo da matriz oposta**
 - **Cálculo do determinante**
-
-Cada elemento da matriz é representado por um **número inteiro de 8 bits**.
 
 Na seção de **Fundamentação Teórica**, serão explicitados os conceitos utilizados como base para a resolução do problema. Na seção de **Metodologia**, serão descritos os processos envolvidos no desenvolvimento do software, como as escolhas de abordagem, a definição dos requisitos e funcionalidades, e a ordem de codificação. Na seção de **Conclusão**, serão informadas brevemente as conclusões e os objetivos cumpridos. Por fim, na seção de **Referências**, serão listadas as fontes utilizadas para a elaboração da resolução.
 
