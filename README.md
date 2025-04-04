@@ -33,15 +33,37 @@ O projeto é composto pelos seguintes módulos principais:
 1. **`fluxo_ram.v`** - Implementa uma memória RAM de porta única para armazenar os valores das matrizes.
 2. **`gerencia_matriz.v`** - Responsável por inicializar e gravar duas matrizes 5×5 na RAM ao receber um sinal de `start`.
 
-#### 📝 Descrição do `fluxo_ram.v`
+#### 📝 Descrição do `fluxo_ram`
 
-Este módulo implementa uma memória RAM de porta única utilizando o IP **altsyncram** da Intel Quartus. As principais características incluem:
+O módulo `fluxo_ram` é responsável por realizar a **interface de leitura e escrita** com uma memória RAM implementada por meio de um IP gerado no Quartus Prime (`altsyncram`) para a FPGA DE1-SoC. Ele abstrai o controle da RAM de porta única, permitindo que outros módulos realizem operações sincronizadas com o clock da placa.
 
-- Tamanho de **256 palavras** de **16 bits**
-- Operação no modo **SINGLE_PORT**
-- Modo de leitura **NEW_DATA_NO_NBE_READ**
-- Inicialização **não definida** (`POWER_UP_UNINITIALIZED = "FALSE"`)
-- Controle de escrita via sinal **wren**
+##### Entradas e Saídas
+
+- **Entradas:**
+  - `clk`: sinal de clock para sincronização com a RAM.
+  - `endereco [7:0]`: endereço de 8 bits utilizado para selecionar uma posição de memória (suporta até 256 posições).
+  - `dado_entrada [8:0]`: valor de 9 bits a ser escrito na memória.
+  - `grava`: controle de operação (`1` para **gravar**, `0` para **ler**).
+
+- **Saídas:**
+  - `dado_saida [8:0]`: valor lido da memória.
+
+##### Funcionamento
+
+O módulo instancia um componente gerado automaticamente pelo Quartus (`ram`), baseado na megafunção `altsyncram`. Esse componente implementa uma RAM síncrona de **porta única**, operando com dados de 16 bits. No entanto, o módulo `fluxo_ram` limita o uso à faixa de 9 bits mais baixos do barramento para compatibilidade com os dados utilizados nas operações matriciais do sistema.
+
+A operação ocorre da seguinte forma:
+
+1. **Escrita (grava = 1):** o dado presente em `dado_entrada` é escrito no endereço indicado por `endereco`.
+2. **Leitura (grava = 0):** o conteúdo do endereço é lido e atribuído à saída `dado_saida`, sincronizado na borda de subida do clock.
+
+Internamente, o dado lido é extraído por meio da atribuição:
+
+```verilog
+always @(posedge clk) begin
+    dado_saida <= saida[8:0]; // Apenas os 9 bits menos significativos
+end
+```
 
 #### 📝 Descrição do 'gerencia_matriz.v'
 
