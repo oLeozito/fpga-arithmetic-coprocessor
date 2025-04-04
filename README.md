@@ -96,10 +96,9 @@ Um contador é utilizado para garantir um pequeno atraso inicial após a ativaç
 
 Este módulo foi desenvolvido com foco na modularidade e na correta manipulação sequencial dos dados em sistemas embarcados baseados em FPGA.
 
----
+### 💻 Ambiente de Desenvolvimento
 
-> 💡 **Nota:** Este módulo depende da definição prévia do componente `fluxo_ram`, responsável pela simulação da RAM interna. Certifique-se de incluí-lo corretamente no projeto.
-
+O coprocessador foi desenvolvido no ambiente de desenvolvimento **Quartus Prime Lite 23.1**.
 
 ## ⚙️ Como Usar
 
