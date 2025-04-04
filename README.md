@@ -100,7 +100,10 @@ Este módulo foi desenvolvido com foco na modularidade e na correta manipulaçã
 
 O coprocessador foi desenvolvido no ambiente de desenvolvimento **Quartus Prime Lite 23.1**.
 
-## 📊 Resultados e Simulações
+## 📊 Conclusão - Resultados e Simulações
+
+O coprocessador implementado oferece uma robusta gama de funcionalidades no que se refere a cálculos matriciai. Durante o desenvolvimento desse projeto, foi possível compreender os conceitos da utilização dos recursos de hardware para realização de operações, bem como o acesso e gerenciamento de memória.
+
 Os testes foram realizados para validar cada uma das operações suportadas. Os resultados foram analisados usando **ModelSim**, em seguida foram aplicadas na placa para ser testado na prática, e confirmaram a correção das operações matriciais.
 
 ### ⚙️ Como Usar
@@ -113,16 +116,16 @@ Os testes foram realizados para validar cada uma das operações suportadas. Os 
 #### 🛠️ Passos para Implementação
 1. **Clone este repositório:**
    ```sh
-   git clone https://github.COMPLETAR.git
+   git clone https://github.COMPLETAR.git](https://github.com/oLeozito/fpga-arithmetic-coprocessor.git
    ```
 2. **Abra o Quartus e carregue o projeto.**
 3. **Compile todos os módulos.**
 4. **Realize a síntese e simulação usando ModelSim.**
-5. **Faça o upload do bitstream para a FPGA.**
-6. **Teste as operações utilizando os sinais de controle.**
+5. **Conecte a FPGA e envie o projeto**
+6. **Teste as operações visualizando atraves In-System Memory Content Editor.**
 
 ## 🚀 Próximos Passos
-- **Otimizar o desempenho da multiplicação de matrizes** para reduzir a latência.
+- **Otimizar o desempenho implmentando pipeline e paralelismo**.
 - **Criar uma interface de comunicação com um processador principal**.
 
 ## 📜 Licença
@@ -132,4 +135,4 @@ Este projeto é distribuído sob a licença **MIT**. Sinta-se livre para utiliza
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, abra uma issue ou envie um pull request.
 
 ---
-📌 Desenvolvido por **[João Marcelo Nascimento Fernandes, Leonardo Oliveira Almeida da Cruz, João Gabriel]**
+📌 Desenvolvido por **[João Marcelo Nascimento Fernandes, Leonardo Oliveira Almeida da Cruz, João Gabriel Santos Silva]**
