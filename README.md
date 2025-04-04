@@ -17,7 +17,7 @@ O coprocessador pode executar as seguintes operações:
 
 Na seção de **Fundamentação Teórica**, serão explicitados os conceitos utilizados como base para a resolução do problema. Na seção de **Metodologia**, serão descritos os processos envolvidos no desenvolvimento do software, como as escolhas de abordagem, a definição dos requisitos e funcionalidades, e a ordem de codificação. Na seção de **Conclusão**, serão informadas brevemente as conclusões e os objetivos cumpridos. Por fim, na seção de **Referências**, serão listadas as fontes utilizadas para a elaboração da resolução.
 
-## 🏗️ Arquitetura do Sistema
+## 🏗️ Metodologia - Arquitetura do Sistema
 O projeto é composto pelos seguintes módulos principais:
 
 ### 🔹 Módulos de Operação
