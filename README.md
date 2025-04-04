@@ -100,14 +100,17 @@ Este módulo foi desenvolvido com foco na modularidade e na correta manipulaçã
 
 O coprocessador foi desenvolvido no ambiente de desenvolvimento **Quartus Prime Lite 23.1**.
 
-## ⚙️ Como Usar
+## 📊 Resultados e Simulações
+Os testes foram realizados para validar cada uma das operações suportadas. Os resultados foram analisados usando **ModelSim**, em seguida foram aplicadas na placa para ser testado na prática, e confirmaram a correção das operações matriciais.
 
-### 🎯 Requisitos
+### ⚙️ Como Usar
+
+#### 🎯 Requisitos
 - **Placa DE1-SoC**
 - **Intel Quartus Prime**
 - **ModelSim** (para simulação)
 
-### 🛠️ Passos para Implementação
+#### 🛠️ Passos para Implementação
 1. **Clone este repositório:**
    ```sh
    git clone https://github.COMPLETAR.git
@@ -117,9 +120,6 @@ O coprocessador foi desenvolvido no ambiente de desenvolvimento **Quartus Prime 
 4. **Realize a síntese e simulação usando ModelSim.**
 5. **Faça o upload do bitstream para a FPGA.**
 6. **Teste as operações utilizando os sinais de controle.**
-
-## 📊 Resultados e Simulações
-Os testes foram realizados para validar cada uma das operações suportadas. Os resultados foram analisados usando **ModelSim**, em seguida foram aplicadas na placa para ser testado na prática, e confirmaram a correção das operações matriciais.
 
 ## 🚀 Próximos Passos
 - **Otimizar o desempenho da multiplicação de matrizes** para reduzir a latência.
