@@ -31,7 +31,7 @@ O projeto é composto pelos seguintes módulos principais:
 ### 🔹 Módulos de Memória
 
 1. **`fluxo_ram.v`** - Implementa uma memória RAM de porta única para armazenar os valores das matrizes.
-2. **`preset_ram.v`** - Responsável por inicializar e gravar duas matrizes 5×5 na RAM ao receber um sinal de `start`.
+2. **`gerencia_matriz.v`** - Responsável por inicializar e gravar duas matrizes 5×5 na RAM ao receber um sinal de `start`.
 
 #### 📝 Descrição do `fluxo_ram.v`
 
@@ -43,14 +43,41 @@ Este módulo implementa uma memória RAM de porta única utilizando o IP **altsy
 - Inicialização **não definida** (`POWER_UP_UNINITIALIZED = "FALSE"`)
 - Controle de escrita via sinal **wren**
 
-#### 📝 Descrição do `preset_ram.v`
+#### 📝 Descrição do 'gerencia_matriz.v'
 
-Este módulo é responsável por **preencher automaticamente** a RAM com duas matrizes 5×5. Ele utiliza um **sinal de controle `start`**, que, ao ser acionado, grava os valores predefinidos nas posições de memória corretas.
+O módulo `gerencia_matriz` é responsável pela leitura e escrita de dados em memória RAM, organizada para armazenar duas matrizes 5x5 (com 25 elementos cada), utilizando 9 bits por elemento. Esse módulo atua como intermediário entre os blocos de memória e os módulos de operação aritmética, garantindo sincronização e controle adequado dos dados.
 
-- **Matriz 1**: Armazenada nos endereços **0 a 24**
-- **Matriz 2**: Armazenada nos endereços **25 a 49**
+##### Entradas e Saídas
 
-A gravação ocorre de forma sequencial, avançando um endereço por ciclo de clock, até que ambas as matrizes estejam carregadas.
+- **Entradas:**
+  - `clk`: sinal de clock para sincronização.
+  - `start`: sinal de controle para iniciar o processo de leitura/gravação.
+  - `grava`: sinal de controle externo para gravação.
+  - `matriz_resultante [224:0]`: vetor que representa a matriz de saída resultante das operações.
+
+- **Saídas:**
+  - `matriz1 [224:0]`: vetor representando a primeira matriz lida.
+  - `matriz2 [224:0]`: vetor representando a segunda matriz lida (ainda não atribuída explicitamente no código apresentado, mas prevista na estrutura).
+
+##### Funcionamento
+
+O módulo utiliza duas instâncias de um componente auxiliar chamado `fluxo_ram`:
+
+- `ram_inst1`: opera em modo de **leitura**, acessando os primeiros 50 endereços da RAM para preencher a memória interna `matriz_ler`.
+- `ram_inst2`: opera em modo de **escrita**, utilizando dados da memória `matriz_escrita` e gravando a partir do endereço 50.
+
+Um contador é utilizado para garantir um pequeno atraso inicial após a ativação do sinal `start`, evitando conflitos com os endereços iniciais da RAM. Durante o processo:
+
+1. A leitura é feita de forma sequencial, armazenando os dados em `matriz_ler`.
+2. Após a leitura dos 50 valores (duas matrizes), o módulo ativa a escrita em `ram_inst2`, enviando os valores armazenados em `matriz_escrita`.
+3. Parte dos dados lidos são atribuídos diretamente à saída `matriz1` para uso posterior.
+
+Este módulo foi desenvolvido com foco na modularidade e na correta manipulação sequencial dos dados em sistemas embarcados baseados em FPGA.
+
+---
+
+> 💡 **Nota:** Este módulo depende da definição prévia do componente `fluxo_ram`, responsável pela simulação da RAM interna. Certifique-se de incluí-lo corretamente no projeto.
+
 
 ## ⚙️ Como Usar
 
