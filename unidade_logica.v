@@ -19,7 +19,7 @@ module unidade_logica(
 	
 	always @(posedge clk) begin
         if (start) begin
-            // Resetar done antes de começar
+            // Resetar done antes de começar.
             done <= 0;
 	
 				case (operacao)
