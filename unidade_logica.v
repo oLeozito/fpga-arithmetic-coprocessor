@@ -394,6 +394,134 @@ module unidade_logica(
 	);
 
 	
+	// Oposta
+	
+   modulo_oposto inst_oposta1(
+     .entrada(matriz_A[7:0]),
+     .saida(matriz_oposta[8:0])
+   );
+
+   modulo_oposto inst_oposta2(
+     .entrada(matriz_A[16:9]),
+     .saida(matriz_oposta[17:9])
+   );
+
+   modulo_oposto inst_oposta3(
+     .entrada(matriz_A[25:18]),
+     .saida(matriz_oposta[26:18])
+   );
+
+   modulo_oposto inst_oposta4(
+     .entrada(matriz_A[34:27]),
+     .saida(matriz_oposta[35:27])
+   );
+
+   modulo_oposto inst_oposta5(
+     .entrada(matriz_A[43:36]),
+     .saida(matriz_oposta[44:36])
+   );
+
+   modulo_oposto inst_oposta6(
+     .entrada(matriz_A[52:45]),
+     .saida(matriz_oposta[53:45])
+   );
+
+   modulo_oposto inst_oposta7(
+     .entrada(matriz_A[61:54]),
+     .saida(matriz_oposta[62:54])
+   );
+
+   modulo_oposto inst_oposta8(
+     .entrada(matriz_A[70:63]),
+     .saida(matriz_oposta[71:63])
+   );
+
+   modulo_oposto inst_oposta9(
+     .entrada(matriz_A[79:72]),
+     .saida(matriz_oposta[80:72])
+   );
+
+   modulo_oposto inst_oposta10(
+     .entrada(matriz_A[88:81]),
+     .saida(matriz_oposta[89:81])
+   );
+
+   modulo_oposto inst_oposta11(
+     .entrada(matriz_A[97:90]),
+     .saida(matriz_oposta[98:90])
+   );
+
+   modulo_oposto inst_oposta12(
+     .entrada(matriz_A[106:99]),
+     .saida(matriz_oposta[107:99])
+   );
+
+   modulo_oposto inst_oposta13(
+     .entrada(matriz_A[115:108]),
+     .saida(matriz_oposta[116:108])
+   );
+
+   modulo_oposto inst_oposta14(
+     .entrada(matriz_A[124:117]),
+     .saida(matriz_oposta[125:117])
+   );
+
+   modulo_oposto inst_oposta15(
+     .entrada(matriz_A[133:126]),
+     .saida(matriz_oposta[134:126])
+   );
+
+   modulo_oposto inst_oposta16(
+     .entrada(matriz_A[142:135]),
+     .saida(matriz_oposta[143:135])
+   );
+
+   modulo_oposto inst_oposta17(
+     .entrada(matriz_A[151:144]),
+     .saida(matriz_oposta[152:144])
+   );
+
+   modulo_oposto inst_oposta18(
+     .entrada(matriz_A[160:153]),
+     .saida(matriz_oposta[161:153])
+   );
+
+   modulo_oposto inst_oposta19(
+     .entrada(matriz_A[169:162]),
+     .saida(matriz_oposta[170:162])
+   );
+
+   modulo_oposto inst_oposta20(
+     .entrada(matriz_A[178:171]),
+     .saida(matriz_oposta[179:171])
+   );
+
+   modulo_oposto inst_oposta21(
+     .entrada(matriz_A[187:180]),
+     .saida(matriz_oposta[188:180])
+   );
+
+   modulo_oposto inst_oposta22(
+     .entrada(matriz_A[196:189]),
+     .saida(matriz_oposta[197:189])
+   );
+
+   modulo_oposto inst_oposta23(
+     .entrada(matriz_A[205:198]),
+     .saida(matriz_oposta[206:198])
+   );
+
+   modulo_oposto inst_oposta24(
+     .entrada(matriz_A[214:207]),
+     .saida(matriz_oposta[215:207])
+   );
+
+   modulo_oposto inst_oposta25(
+     .entrada(matriz_A[223:216]),
+     .saida(matriz_oposta[224:216])
+   );
+
+	
 	// Multiplicação
 	modulo_multiplicador inst_multi1(
      .a(matriz_A[7:0]),
