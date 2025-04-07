@@ -1,7 +1,7 @@
 module gerencia_matriz(
-	input clk,            	// Clock para sincronização
+	input clk,        // Clock para sincronização
 	input start,     	// Sinal para iniciar a gravação
- 	input grava,
+ 	input grava,      // 0 Indica Leitura - 1 Indica Gravação
  	input [224:0] matriz_resultante,
  	output reg [224:0] matriz1,
  	output reg [224:0] matriz2
@@ -44,7 +44,6 @@ module gerencia_matriz(
 
 	// Inicialização dos valores das matrizes
 	initial begin     	 
-     	 
       	endereco1 = 0; endereco2 = 0; contador = 0; gravar = 0;
 	end
 	 
@@ -53,7 +52,7 @@ module gerencia_matriz(
 	 
 	always @(posedge clk) begin
     	if (start) begin 	 
-      	if(contador < 30) begin
+      	if(contador < 2) begin
             	contador <= contador+1; // Atraso pra nao zerar os primeiros endereços
             	end
         	if (endereco1 < 50) begin
