@@ -38,7 +38,19 @@ module unidade_logica(
 				end
 		end
 	end
-		
+	
+	// Multiplicaça por Inteiro
+	mult_const(
+		.matriz_A(matriz_A),
+		.const(matriz_B[7:0]),
+		.resultado(matriz_int)
+	);
+	
+	// Transposta
+	modulo_transpor inst_transp(
+    .matrix_in(matriz_A),
+    .matrix_out(matriz_transp)
+	);
 		
 	// Soma
 	modulo_somador_subtrator inst1(
