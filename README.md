@@ -57,14 +57,14 @@ Este sistema implementa módulos Verilog para o cálculo de determinantes de mat
 
 Calcula o determinante de uma matriz 2x2 utilizando a fórmula clássica:
 
-\[
+$$
 \text{det} =
 \begin{vmatrix}
 a & b \\
 c & d
 \end{vmatrix}
 = ad - bc
-\]
+$$
 
 **Entradas:**
 
