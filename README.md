@@ -53,8 +53,6 @@ Para a implementação das operações, foi necessário utilizar os métodos par
 
 Este sistema implementa módulos Verilog para o cálculo de determinantes de matrizes 2x2, 3x3 e 4x4, utilizando multiplicações, subtrações e cofactoração. Os módulos são organizados hierarquicamente, favorecendo a reutilização e a modularidade.
 
----
-
 #### `mod_determinante_2x2`
 
 Calcula o determinante de uma matriz 2x2 utilizando a fórmula clássica:
@@ -77,8 +75,6 @@ c & d
 - `resultado` (`[7:0]`): Valor do determinante.
 
 Este módulo utiliza dois módulos auxiliares de multiplicação (`mod_mult`) para calcular `ad` e `bc`.
-
----
 
 #### `mod_det_3x3`
 
@@ -103,8 +99,6 @@ g & h & i
 - `resultado` (`signed [7:0]`): Valor do determinante.
 
 As operações são realizadas diretamente com multiplicações e subtrações.
-
----
 
 #### `mod_det_4x4`
 
@@ -143,8 +137,6 @@ Onde cada \( M_i \) é uma submatriz 3x3 obtida da matriz original ao remover a 
 - Cada submatriz 3x3 é carregada em registradores e enviada para o módulo `mod_det_3x3`.
 - O resultado parcial é armazenado em `temp[3:0]` e, ao final, a expressão completa é avaliada com os sinais alternados de cofactores: `+ - + -`.
 
----
-
 #### 🧱 Hierarquia de Módulos
 
 ```text
@@ -154,6 +146,8 @@ mod_det_4x4
 mod_determinante_2x2
  └── mod_mult (2 instâncias)
 ```
+
+---
 
 #### 📝 Descrição do `fluxo_ram`
 
