@@ -102,18 +102,29 @@ As operações são realizadas diretamente com multiplicações e subtrações.
 
 #### `mod_det_4x4`
 
-Calcula o determinante de uma matriz 4x4 utilizando cofactoração da primeira linha, expandindo em 4 submatrizes 3x3:
+Utiliza cofactoração da primeira linha. A matriz é:
 
-$$
-\text{det} =
-a \cdot \text{det}(M_0)
-- b \cdot \text{det}(M_1)
-+ c \cdot \text{det}(M_2)
-- d \cdot \text{det}(M_3)
-$$
+```
+| a  b  c  d |
+| e  f  g  h |
+| i  j  k  l |
+| m  n  o  p |
+```
 
+A fórmula de cofactores aplicada na primeira linha é:
 
-Onde cada \( M_i \) é uma submatriz 3x3 obtida da matriz original ao remover a linha 0 e a coluna correspondente ao elemento \( a, b, c \) ou \( d \).
+```
+det = a · det(M₀)
+    - b · det(M₁)
+    + c · det(M₂)
+    - d · det(M₃)
+```
+
+Onde:
+- `M₀` = submatriz 3x3 excluindo a linha 0 e coluna 0
+- `M₁` = submatriz 3x3 excluindo a linha 0 e coluna 1
+- `M₂` = submatriz 3x3 excluindo a linha 0 e coluna 2
+- `M₃` = submatriz 3x3 excluindo a linha 0 e coluna 3
 
 **Entradas:**
 
