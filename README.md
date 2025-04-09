@@ -181,6 +181,8 @@ always @(posedge clk) begin
 end
 ```
 
+---
+
 #### 📝 Descrição do 'gerencia_matriz.v'
 
 O módulo `gerencia_matriz` é responsável pela leitura e escrita de dados em memória RAM, organizada para armazenar duas matrizes 5x5 (com 25 elementos cada), utilizando 9 bits por elemento. Esse módulo atua como intermediário entre os blocos de memória e os módulos de operação aritmética, garantindo sincronização e controle adequado dos dados.
@@ -211,6 +213,8 @@ Um contador é utilizado para garantir um pequeno atraso inicial após a ativaç
 3. Parte dos dados lidos são atribuídos diretamente à saída `matriz1` para uso posterior.
 
 Este módulo foi desenvolvido com foco na modularidade e na correta manipulação sequencial dos dados em sistemas embarcados baseados em FPGA.
+
+---
 
 #### 📝 Descrição do `unidade_logica.v`
 
