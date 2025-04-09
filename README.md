@@ -38,7 +38,7 @@ O projeto é composto pelos seguintes módulos principais:
 1. **`main.v`** - Código principal, que chama e relaciona todas os módulos do projeto.
 2. **`unidade_logica.v`** - Responsável pela seleção de qual operação será exibida na memória.
 
-### 🔨 Lógica Desenvolvida
+### 🧠 Lógica Desenvolvida
 
 Para a implementação das operações, foi necessário utilizar os métodos para gerenciamento de mémoria e de envio de sinais:
 
@@ -49,7 +49,9 @@ Para a implementação das operações, foi necessário utilizar os métodos par
 
 ### 📑 Descrição de módulos fundamentais
 
-#### Descrição 
+#### 📝 Descrição do `modulo_determinante`
+
+
 
 #### 📝 Descrição do `fluxo_ram`
 
@@ -113,6 +115,58 @@ Um contador é utilizado para garantir um pequeno atraso inicial após a ativaç
 3. Parte dos dados lidos são atribuídos diretamente à saída `matriz1` para uso posterior.
 
 Este módulo foi desenvolvido com foco na modularidade e na correta manipulação sequencial dos dados em sistemas embarcados baseados em FPGA.
+
+#### 📝 Descrição do `unidade_logica.v`
+
+O módulo `unidade_logica` atua como **unidade central de controle lógico** das operações matriciais no sistema. Ele recebe duas matrizes 5x5 (`matriz_A` e `matriz_B`), além de um código de operação, e entrega como saída uma `matriz_resultado` correspondente à operação escolhida.
+
+Esse módulo é projetado para ser **sincronizado com o clock** do sistema e ativado por meio do sinal `start`, com um sinal de saída `done` indicando o término da operação.
+
+##### Entradas e Saídas
+
+- **Entradas:**
+  - `clk`: sinal de clock.
+  - `start`: sinal de controle que ativa a operação.
+  - `operacao [2:0]`: código binário que seleciona qual operação será realizada.
+  - `matriz_A [224:0]`: matriz de entrada A (5x5, 25 elementos de 9 bits).
+  - `matriz_B [224:0]`: matriz de entrada B (ou constante no caso de multiplicação por inteiro).
+
+- **Saídas:**
+  - `matriz_resultado [224:0]`: resultado da operação selecionada.
+  - `done`: sinal que indica quando a operação foi finalizada.
+
+##### Funcionamento
+
+Ao receber um pulso de `start`, o módulo avalia o campo `operacao` e seleciona uma das operações disponíveis:
+
+| Código `operacao` | Operação                         |
+|-------------------|----------------------------------|
+| `000`             | Soma de matrizes                 |
+| `001`             | Subtração de matrizes            |
+| `010`             | Matriz oposta (não implementada) |
+| `011`             | Multiplicação de matrizes        |
+| `100`             | Transposição da matriz A         |
+| `101`             | Determinante da matriz A         |
+| `110`             | Multiplicação da matriz A por constante (vinda de B) |
+
+O sinal `done` é ativado ao final da execução, indicando que o resultado está pronto.
+
+##### Módulos Internos Utilizados
+
+O módulo `unidade_logica` depende de diversos módulos auxiliares para realizar operações específicas:
+
+- **`modulo_somador_subtrator`**: instanciado 25 vezes para realizar a **soma e subtração** de cada elemento da matriz.
+- **`modulo_transpor`**: responsável por transpor a matriz A.
+- **`mult_const`**: realiza a multiplicação da matriz A por um valor constante (extraído de `matriz_B[7:0]`).
+
+Outros módulos como **multiplicação de matrizes**, **matriz oposta** e **determinante** são declarados mas **ainda não estão implementados** neste código-fonte.
+
+##### Observações
+
+- A manipulação dos elementos individuais da matriz (cada elemento com 9 bits) é feita manualmente para cada uma das 25 posições, totalizando 25 instâncias para soma e subtração.
+- O uso de `wire` para interligar os resultados dos módulos auxiliares permite que a seleção lógica na `always` block seja feita de forma eficiente.
+
+Este módulo é essencial para o sistema de operações aritméticas em hardware, garantindo modularidade e clareza no fluxo de dados.
 
 ### 💻 Ambiente de Desenvolvimento
 
