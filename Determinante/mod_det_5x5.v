@@ -9,7 +9,12 @@ module mod_det_5x5 (
                        p, q, r, s, t,
                        u, v, w, x, y,
     output reg signed [15:0] resultado, // Pode crescer por multiplicações
-    output reg done
+    output reg done,
+    output reg [7:0] sub1,
+    output reg [7:0] sub2,
+    output reg [7:0] sub3,
+    output reg [7:0] sub4,
+    output reg [7:0] sub5
 );
 
     // Sinais para o módulo 4x4
@@ -102,6 +107,12 @@ module mod_det_5x5 (
                              (linha0[2] * temp[2]) -
                              (linha0[3] * temp[3]) +
                              (linha0[4] * temp[4]);
+
+                sub1 <= temp[0];
+                sub2 <= temp[1];
+                sub3 <= temp[2];
+                sub4 <= temp[3];
+                sub5 <= temp[4];
                 done <= 1;
                 ativo <= 0;
                 state <= 0;
