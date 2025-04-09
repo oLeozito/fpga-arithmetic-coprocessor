@@ -80,7 +80,7 @@ Este módulo utiliza dois módulos auxiliares de multiplicação (`mod_mult`) pa
 
 Calcula o determinante de uma matriz 3x3 com a regra de Sarrus ou cofactores da primeira linha:
 
-\[
+$$
 \text{det} =
 \begin{vmatrix}
 a & b & c \\
@@ -88,7 +88,7 @@ d & e & f \\
 g & h & i
 \end{vmatrix}
 = a(ei - fh) - b(di - fg) + c(dh - eg)
-\]
+$$
 
 **Entradas:**
 
@@ -104,7 +104,7 @@ As operações são realizadas diretamente com multiplicações e subtrações.
 
 Calcula o determinante de uma matriz 4x4 utilizando cofactoração da primeira linha, expandindo em 4 submatrizes 3x3:
 
-\[
+$$
 \text{det} =
 \begin{vmatrix}
 a & b & c & d \\
@@ -116,7 +116,7 @@ m & n & o & p
 - b \cdot \text{det}(M_1)
 + c \cdot \text{det}(M_2)
 - d \cdot \text{det}(M_3)
-\]
+$$
 
 Onde cada \( M_i \) é uma submatriz 3x3 obtida da matriz original ao remover a linha 0 e a coluna correspondente ao elemento \( a, b, c \) ou \( d \).
 
