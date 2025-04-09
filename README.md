@@ -38,6 +38,19 @@ O projeto é composto pelos seguintes módulos principais:
 1. **`main.v`** - Código principal, que chama e relaciona todas os módulos do projeto.
 2. **`unidade_logica.v`** - Responsável pela seleção de qual operação será exibida na memória.
 
+### 🔨 Lógica Desenvolvida
+
+Para a implementação das operações, foi necessário utilizar os métodos para gerenciamento de mémoria e de envio de sinais:
+
+  - Limitação de bits na saída
+  - Repretação por meio de complemento a dois
+  - Tratamento de overflow
+  - Máquina de Estados
+
+### 📑 Descrição de módulos fundamentais
+
+#### Descrição 
+
 #### 📝 Descrição do `fluxo_ram`
 
 O módulo `fluxo_ram` é responsável por realizar a **interface de leitura e escrita** com uma memória RAM implementada por meio de um IP gerado no Quartus Prime (`altsyncram`) para a FPGA DE1-SoC. Ele abstrai o controle da RAM de porta única, permitindo que outros módulos realizem operações sincronizadas com o clock da placa.
