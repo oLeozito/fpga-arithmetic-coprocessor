@@ -49,9 +49,111 @@ Para a implementação das operações, foi necessário utilizar os métodos par
 
 ### 📑 Descrição de módulos fundamentais
 
-#### 📝 Descrição do `modulo_determinante`
+#### 📝 Módulos de Cálculo de Determinante
 
+Este sistema implementa módulos Verilog para o cálculo de determinantes de matrizes 2x2, 3x3 e 4x4, utilizando multiplicações, subtrações e cofactoração. Os módulos são organizados hierarquicamente, favorecendo a reutilização e a modularidade.
 
+---
+
+#### `mod_determinante_2x2`
+
+Calcula o determinante de uma matriz 2x2 utilizando a fórmula clássica:
+
+\[
+\text{det} =
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+= ad - bc
+\]
+
+**Entradas:**
+
+- `a, b, c, d` (`[7:0]`): Elementos da matriz.
+
+**Saída:**
+
+- `resultado` (`[7:0]`): Valor do determinante.
+
+Este módulo utiliza dois módulos auxiliares de multiplicação (`mod_mult`) para calcular `ad` e `bc`.
+
+---
+
+#### `mod_det_3x3`
+
+Calcula o determinante de uma matriz 3x3 com a regra de Sarrus ou cofactores da primeira linha:
+
+\[
+\text{det} =
+\begin{vmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{vmatrix}
+= a(ei - fh) - b(di - fg) + c(dh - eg)
+\]
+
+**Entradas:**
+
+- `a` até `i` (`signed [7:0]`): Elementos da matriz 3x3.
+
+**Saída:**
+
+- `resultado` (`signed [7:0]`): Valor do determinante.
+
+As operações são realizadas diretamente com multiplicações e subtrações.
+
+---
+
+#### `mod_det_4x4`
+
+Calcula o determinante de uma matriz 4x4 utilizando cofactoração da primeira linha, expandindo em 4 submatrizes 3x3:
+
+\[
+\text{det} =
+\begin{vmatrix}
+a & b & c & d \\
+e & f & g & h \\
+i & j & k & l \\
+m & n & o & p
+\end{vmatrix}
+= a \cdot \text{det}(M_0)
+- b \cdot \text{det}(M_1)
++ c \cdot \text{det}(M_2)
+- d \cdot \text{det}(M_3)
+\]
+
+Onde cada \( M_i \) é uma submatriz 3x3 obtida da matriz original ao remover a linha 0 e a coluna correspondente ao elemento \( a, b, c \) ou \( d \).
+
+**Entradas:**
+
+- `a` até `p` (`signed [7:0]`): Elementos da matriz 4x4.
+- `clk`: Clock do sistema.
+- `start`: Sinal para iniciar o cálculo.
+
+**Saídas:**
+
+- `resultado` (`signed [15:0]`): Valor do determinante.
+- `done`: Indica quando o cálculo foi concluído.
+
+**Funcionamento:**
+
+- O módulo passa por uma máquina de estados (`state`) que percorre os cofactores da primeira linha.
+- Cada submatriz 3x3 é carregada em registradores e enviada para o módulo `mod_det_3x3`.
+- O resultado parcial é armazenado em `temp[3:0]` e, ao final, a expressão completa é avaliada com os sinais alternados de cofactores: `+ - + -`.
+
+---
+
+#### 🧱 Hierarquia de Módulos
+
+```text
+mod_det_4x4
+ └── mod_det_3x3
+      └── (operações diretas)
+mod_determinante_2x2
+ └── mod_mult (2 instâncias)
+```
 
 #### 📝 Descrição do `fluxo_ram`
 
