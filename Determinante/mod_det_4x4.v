@@ -7,7 +7,7 @@ module mod_det_4x4 (
                       e, f, g, h,
                       i, j, k, l,
                       m, n, o, p, // Elementos da matriz 4x4
-    output reg signed [15:0] resultado, // Tamanho maior para suportar o determinante
+    output reg [15:0] resultado, // Tamanho maior para suportar o determinante
     output reg done
 );
 

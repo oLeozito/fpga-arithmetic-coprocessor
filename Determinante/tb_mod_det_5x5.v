@@ -14,7 +14,7 @@ module tb_mod_det_5x5;
 
     wire signed [15:0] resultado;
     wire done;
-    wire signed [7:0] submatriz1, submatriz2, submatriz3, submatriz4, submatriz5;
+    wire signed [15:0] submatriz1, submatriz2, submatriz3, submatriz4, submatriz5;
 
     // Instancia o módulo
     mod_det_5x5 uut (
@@ -41,7 +41,7 @@ module tb_mod_det_5x5;
         // Matriz de exemplo 5x5 — determinante conhecido = 6
         a = 1;  b = 2;  c = 2;  d = 2;  e = 1;
         f = 2;  g = 1;  h = 2;  i = 2;  j = 1;
-        k = 1;  l = 2;  m = 3;  n = 1;  o = 2;
+        k = 1;  l = 3;  m = 3;  n = 1;  o = 2;
         p = 2;  q = 2;  r = 1;  s = 2;  t = 1;
         u = 2;  v = 1;  w = 1;  x = 1;  y = 2;
 

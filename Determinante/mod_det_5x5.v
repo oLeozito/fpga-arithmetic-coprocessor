@@ -10,11 +10,11 @@ module mod_det_5x5 (
                        u, v, w, x, y,
     output reg signed [15:0] resultado, // Pode crescer por multiplicações
     output reg done,
-    output reg [7:0] sub1,
-    output reg [7:0] sub2,
-    output reg [7:0] sub3,
-    output reg [7:0] sub4,
-    output reg [7:0] sub5
+    output reg signed [15:0] sub1,
+    output reg signed [15:0] sub2,
+    output reg signed [15:0] sub3,
+    output reg signed [15:0] sub4,
+    output reg signed [15:0] sub5
 );
 
     // Sinais para o módulo 4x4
@@ -83,14 +83,12 @@ module mod_det_5x5 (
                              ii <= p; jj <= q; kk <= r; ll <= s;
                              mm <= u; nn <= v; oo <= w; pp <= x; end
                 endcase
-                start_4x4 <= 1;
-                state <= 2;
+                state <= 4;
             end
 
             2: begin
                 if (done_4x4) begin
                     temp[count] <= resultado_4x4;
-                    start_4x4 <= 0;
                     if (count == 4)
                         state <= 3;
                     else begin
@@ -102,11 +100,11 @@ module mod_det_5x5 (
 
             3: begin
                 // Cofator expandido pela primeira linha (sinais alternando + - + - +)
-                resultado <= (linha0[0] * temp[0]) -
-                             (linha0[1] * temp[1]) +
-                             (linha0[2] * temp[2]) -
-                             (linha0[3] * temp[3]) +
-                             (linha0[4] * temp[4]);
+                resultado <= (a * temp[0]) -
+                             (b * temp[1]) +
+                             (c * temp[2]) -
+                             (d * temp[3]) +
+                             (e * temp[4]);
 
                 sub1 <= temp[0];
                 sub2 <= temp[1];
@@ -117,6 +115,17 @@ module mod_det_5x5 (
                 ativo <= 0;
                 state <= 0;
             end
+
+            4: begin
+                start_4x4 <= 1;
+                state <= 5;
+            end
+
+            5: begin
+                start_4x4 <= 0;
+                state <= 2;
+            end
+
         endcase
     end
 
