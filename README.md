@@ -33,6 +33,11 @@ O projeto é composto pelos seguintes módulos principais:
 1. **`fluxo_ram.v`** - Implementa uma memória RAM de porta única para armazenar os valores das matrizes.
 2. **`gerencia_matriz.v`** - Responsável por inicializar e gravar duas matrizes 5×5 na RAM ao receber um sinal de `start`.
 
+### 🔹 Módulos de Gerenciamento
+
+1. **`main.v`** - Código principal, que chama e relaciona todas os módulos do projeto.
+2. **`unidade_logica.v`** - Responsável pela seleção de qual operação será exibida na memória.
+
 #### 📝 Descrição do `fluxo_ram`
 
 O módulo `fluxo_ram` é responsável por realizar a **interface de leitura e escrita** com uma memória RAM implementada por meio de um IP gerado no Quartus Prime (`altsyncram`) para a FPGA DE1-SoC. Ele abstrai o controle da RAM de porta única, permitindo que outros módulos realizem operações sincronizadas com o clock da placa.
