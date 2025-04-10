@@ -143,12 +143,78 @@ Onde:
 - Cada submatriz 3x3 é carregada em registradores e enviada para o módulo `mod_det_3x3`.
 - O resultado parcial é armazenado em `temp[3:0]` e, ao final, a expressão completa é avaliada com os sinais alternados de cofactores: `+ - + -`.
 
+---
+
+#### 🧮 `mod_det_5x5`
+
+Este módulo calcula o determinante de uma matriz 5x5 utilizando a **regra de cofactores**, expandindo a primeira linha em 5 submatrizes 4x4. O resultado final é obtido com alternância de sinais (cofactores positivos e negativos).
+
+Seja a matriz:
+
+$$
+A = 
+\begin{bmatrix}
+a & b & c & d & e \\
+f & g & h & i & j \\
+k & l & m & n & o \\
+p & q & r & s & t \\
+u & v & w & x & y \\
+\end{bmatrix}
+$$
+
+A expansão do determinante pela primeira linha é:
+
+$$
+\text{det}(A) = 
+a \cdot \text{det}(M_0) -
+b \cdot \text{det}(M_1) +
+c \cdot \text{det}(M_2) -
+d \cdot \text{det}(M_3) +
+e \cdot \text{det}(M_4)
+$$
+
+Onde cada \( M_i \) é a submatriz 4x4 obtida da matriz original pela exclusão da **linha 0** e da **coluna i**.
+
+---
+
+**Entradas**
+
+- `clk`: Clock principal do sistema.
+- `start`: Sinal de início da operação.
+- `a` até `y`: Elementos da matriz 5x5 (`signed [7:0]` cada).
+
+**Saídas**
+
+- `resultado`: Valor final do determinante (`signed [15:0]`).
+- `done`: Sinal que indica que o cálculo foi finalizado.
+- `sub1` até `sub5`: Resultados intermediários das 5 submatrizes 4x4, úteis para debug e verificação.
+
+---
+
+**Funcionamento Interno**
+
+- Ao receber `start`, o módulo inicia a cofactoração da primeira linha.
+- Para cada elemento da primeira linha, ele extrai a submatriz 4x4 correspondente e calcula seu determinante utilizando o módulo `mod_det_4x4`.
+- Os resultados intermediários das submatrizes são multiplicados pelos coeficientes `a`, `b`, `c`, `d` e `e`, com alternância de sinal:
+
+$$
+\text{det} = 
+a \cdot \text{sub1} -
+b \cdot \text{sub2} +
+c \cdot \text{sub3} -
+d \cdot \text{sub4} +
+e \cdot \text{sub5}
+$$
+
+- Ao final, `resultado` é disponibilizado e `done` é ativado.
+
 #### 🧱 Hierarquia de Módulos
 
 ```text
-mod_det_4x4
- └── mod_det_3x3
-      └── (operações diretas)
+mod_det_5x5
+ └── mod_det_4x4
+       └── mod_det_3x3
+            └── (operações diretas)
 mod_determinante_2x2
  └── mod_mult (2 instâncias)
 ```
