@@ -43,7 +43,7 @@ O projeto é composto pelos seguintes módulos principais:
 Para a implementação das operações, foi necessário utilizar os métodos para gerenciamento de mémoria e de envio de sinais:
 
   - Limitação de bits na saída
-  - Repretação por meio de complemento a dois
+  - Representação por meio de complemento a dois
   - Tratamento de overflow
   - Máquina de Estados
 
