@@ -143,8 +143,6 @@ Onde:
 - Cada submatriz 3x3 é carregada em registradores e enviada para o módulo `mod_det_3x3`.
 - O resultado parcial é armazenado em `temp[3:0]` e, ao final, a expressão completa é avaliada com os sinais alternados de cofactores: `+ - + -`.
 
----
-
 #### 🧮 `mod_det_5x5`
 
 Este módulo calcula o determinante de uma matriz 5x5 utilizando a **regra de cofactores**, expandindo a primeira linha em 5 submatrizes 4x4. O resultado final é obtido com alternância de sinais (cofactores positivos e negativos).
@@ -175,8 +173,6 @@ $$
 
 Onde cada \( M_i \) é a submatriz 4x4 obtida da matriz original pela exclusão da **linha 0** e da **coluna i**.
 
----
-
 **Entradas**
 
 - `clk`: Clock principal do sistema.
@@ -188,8 +184,6 @@ Onde cada \( M_i \) é a submatriz 4x4 obtida da matriz original pela exclusão 
 - `resultado`: Valor final do determinante (`signed [15:0]`).
 - `done`: Sinal que indica que o cálculo foi finalizado.
 - `sub1` até `sub5`: Resultados intermediários das 5 submatrizes 4x4, úteis para debug e verificação.
-
----
 
 **Funcionamento Interno**
 
@@ -348,14 +342,14 @@ O coprocessador foi desenvolvido no ambiente de desenvolvimento **Quartus Prime 
 
 O coprocessador implementado oferece uma robusta gama de funcionalidades no que se refere a cálculos matriciai. Durante o desenvolvimento desse projeto, foi possível compreender os conceitos da utilização dos recursos de hardware para realização de operações, bem como o acesso e gerenciamento de memória.
 
-Os testes foram realizados para validar cada uma das operações suportadas. Os resultados foram analisados usando **ModelSim**, em seguida foram aplicadas na placa para ser testado na prática, e confirmaram a correção das operações matriciais.
+Os testes foram realizados para validar cada uma das operações suportadas. Os resultados foram analisados usando **Icarus Verilog**, em seguida foram aplicadas na placa para ser testado na prática, e confirmaram a correção das operações matriciais.
 
 ### ⚙️ Como Usar
 
 #### 🎯 Requisitos
 - **Placa DE1-SoC**
 - **Intel Quartus Prime**
-- **ModelSim** (para simulação)
+- **Icarus Verilog** (para simulação)
 
 #### 🛠️ Passos para Implementação
 1. **Clone este repositório:**
@@ -364,7 +358,7 @@ Os testes foram realizados para validar cada uma das operações suportadas. Os 
    ```
 2. **Abra o Quartus e carregue o projeto.**
 3. **Compile todos os módulos.**
-4. **Realize a síntese e simulação usando ModelSim.**
+4. **Realize a síntese e simulação usando Icarus Verilog.**
 5. **Conecte a FPGA e envie o projeto**
 6. **Teste as operações visualizando atraves In-System Memory Content Editor.**
 
@@ -376,7 +370,10 @@ Os testes foram realizados para validar cada uma das operações suportadas. Os 
 Este projeto é distribuído sob a licença **MIT**. Sinta-se livre para utilizar, modificar e contribuir!
 
 ## Bibliografia
-Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, abra uma issue ou envie um pull request.
+
+- BROWN, S.; VRANESIC, Z. *Fundamentals of Digital Logic with Verilog Design*. McGraw-Hill, 2013.  
+- LEE, Y.T.; SMITH, J. *FPGA-Based Matrix Processing*. IEEE Transactions on Computers, 2020.  
+- Documentação oficial da placa DE1-SoC.
 
 ---
 📌 Desenvolvido por **[João Marcelo Nascimento Fernandes, Leonardo Oliveira Almeida da Cruz, João Gabriel Santos Silva]**
